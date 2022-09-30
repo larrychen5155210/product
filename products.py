@@ -20,6 +20,7 @@ with open('products.txt', 'w') as f: # 'w' : 寫入模式
 	for product in products:
 		f.write(product[0] + ',' + product[1] + '\n')
 
-with open('products.csv', 'w') as f: 
+with open('products.csv', 'w', encoding = 'utf-8')as f: # encoding, 編碼
+	f.write('商品,價格\n')
 	for product in products:
 		f.write(product[0] + ',' + product[1] + '\n')
