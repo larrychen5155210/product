@@ -1,15 +1,22 @@
 #記帳程式
 #二維清單
 
+import os # operating system 作業系統
+
 products = []
 
 # 讀取舊有檔案
-with open('products.csv', 'r', encoding = 'utf-8') as f: 
-	for line in f:
-		if '商品,價格' in line:
-			continue # 跳過此次迴圈, 跳至下一迴圈
-		name, price = line.strip().split(',') # strip 去除空格(\n), split 分割
-		products.append([name, price])
+if os.path.isfile('products.csv'): # 檢查檔案是否存在
+	print('找到檔案!!')
+	with open('products.csv', 'r', encoding = 'utf-8') as f: 
+		for line in f:
+			if '商品,價格' in line:
+				continue # 跳過此次迴圈, 跳至下一迴圈
+			name, price = line.strip().split(',') # strip 去除空格(\n), split 分割
+			products.append([name, price])
+	print(products)
+else:
+	print('找不到檔案.....')
 
 #讓使用者輸入
 while True:
